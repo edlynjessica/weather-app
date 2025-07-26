@@ -1,0 +1,78 @@
+:root {
+  --bg-light: #f0f8ff;
+  --bg-dark: #1a1a2e;
+  --card-bg-light: white;
+  --card-bg-dark: #2e2e3e;
+  --text-light: #333;
+  --text-dark: #eee;
+  --accent: #0077ff;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: var(--bg-light);
+  color: var(--text-light);
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+body.dark {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.container {
+  max-width: 500px;
+  margin: 5% auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search input {
+  padding: 10px;
+  width: 60%;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  outline: none;
+}
+
+.search button {
+  padding: 10px 15px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card {
+  background: var(--card-bg-light);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transition: background 0.3s ease;
+}
+
+body.dark .card {
+  background: var(--card-bg-dark);
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+button#toggleMode {
+  background: #555;
+}
+
+body.dark button#toggleMode {
+  background: #f0c420;
+  color: black;
+}
