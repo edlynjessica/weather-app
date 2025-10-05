@@ -10,7 +10,7 @@
 /* ==================== BODY ==================== */
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
   background-color: var(--bg-light);
   color: var(--text-light);
   display: flex;
@@ -32,31 +32,32 @@ body {
 
 /* ==================== CONTAINER ==================== */
 .container {
-  position: relative; /* on top of lines */
+  position: relative;
   z-index: 10;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px; /* spacing between elements */
+  gap: 20px;
+  width: 100%;
+  max-width: 450px;
 }
 
 /* ==================== CARD ==================== */
 .card {
   background-color: #036666;
-  width: 400px;
+  width: 100%;
   min-height: 150px;
   color: white;
   border-radius: 20px;
-  padding: 20px;
+  padding: 25px 20px;
   text-align: center;
   box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
   transition: transform 0.3s, background-color 0.4s;
 }
 
-/* ==================== HEADER ==================== */
-h1 {
-  font-size: 2.5rem;
+.card h1 {
+  font-size: 2rem;
   margin-bottom: 10px;
 }
 
@@ -78,6 +79,11 @@ h1 {
   border-radius: 25px;
   font-size: 1rem;
   outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-box input[type="text"]:focus {
+  border-color: var(--accent);
 }
 
 .search-box button {
@@ -88,11 +94,12 @@ h1 {
   color: white;
   font-size: 1.1rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .search-box button:hover {
   background-color: #00796b;
+  transform: scale(1.1);
 }
 
 /* ==================== RESULT BOX ==================== */
@@ -113,6 +120,7 @@ h1 {
   background-color: #2c2c2c;
   color: var(--text-dark);
 }
+
 /* ==================== DARK MODE TOGGLE ==================== */
 .switch {
   position: relative;
@@ -174,8 +182,8 @@ input:checked + .slider::before {
   height: 100%;
   display: flex;
   justify-content: space-between;
-  pointer-events: none; /* allows clicking content */
-  z-index: 1; /* behind all content */
+  pointer-events: none;
+  z-index: 1;
 }
 
 .line {
@@ -199,20 +207,71 @@ input:checked + .slider::before {
   animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
 }
 
-/* --- Different line colors and animation delays --- */
-.line:nth-child(1)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #FF4500 75%, #FF4500 100%); animation-delay: 0.5s;}
-.line:nth-child(2)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #32CD32 75%, #32CD32 100%); animation-delay: 1s;}
-.line:nth-child(3)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #1E90FF 75%, #1E90FF 100%); animation-delay: 1.5s;}
-.line:nth-child(4)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #FFD700 75%, #FFD700 100%); animation-delay: 2s;}
-.line:nth-child(5)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #8A2BE2 75%, #8A2BE2 100%); animation-delay: 2.5s;}
-.line:nth-child(6)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #20B2AA 75%, #20B2AA 100%); animation-delay: 3s;}
-.line:nth-child(7)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #DC143C 75%, #DC143C 100%); animation-delay: 3.5s;}
-.line:nth-child(8)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #00FA9A 75%, #00FA9A 100%); animation-delay: 4s;}
-.line:nth-child(9)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #FF1493 75%, #FF1493 100%); animation-delay: 4.5s;}
-.line:nth-child(10)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #00BFFF 75%, #00BFFF 100%); animation-delay: 5s;}
+/* Different line colors & delays */
+.line:nth-child(1)::after { background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #FF4500 75%, #FF4500 100%); animation-delay: 0.5s;}
+.line:nth-child(2)::after { background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #32CD32 75%, #32CD32 100%); animation-delay: 1s;}
+.line:nth-child(3)::after { background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #1E90FF 75%, #1E90FF 100%); animation-delay: 1.5s;}
+.line:nth-child(4)::after { background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #FFD700 75%, #FFD700 100%); animation-delay: 2s;}
+.line:nth-child(5)::after { background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #8A2BE2 75%, #8A2BE2 100%); animation-delay: 2.5s;}
+.line:nth-child(6)::after { background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #20B2AA 75%, #20B2AA 100%); animation-delay: 3s;}
+.line:nth-child(7)::after { background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #DC143C 75%, #DC143C 100%); animation-delay: 3.5s;}
+.line:nth-child(8)::after { background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #00FA9A 75%, #00FA9A 100%); animation-delay: 4s;}
+.line:nth-child(9)::after { background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #FF1493 75%, #FF1493 100%); animation-delay: 4.5s;}
+.line:nth-child(10)::after { background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #00BFFF 75%, #00BFFF 100%); animation-delay: 5s;}
 
-/* ==================== KEYFRAMES ==================== */
 @keyframes drop {
   0% { top: -50%; }
   100% { top: 110%; }
+}
+
+/* ==================== RESPONSIVENESS ==================== */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+    overflow: visible;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .card h1 {
+    font-size: 1.6rem;
+  }
+
+  .search-box {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .search-box input[type="text"],
+  .search-box button {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  .result {
+    padding: 15px;
+  }
+
+  .lines {
+    display: none; /* Hide background lines for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .card h1 {
+    font-size: 1.4rem;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .search-box input,
+  .search-box button {
+    font-size: 0.9rem;
+  }
 }
