@@ -1,3 +1,4 @@
+/* ==================== VARIABLES ==================== */
 :root {
   --bg-light: #e0f7fa;
   --text-light: #00695c;
@@ -6,6 +7,7 @@
   --accent: #00897b;
 }
 
+/* ==================== BODY ==================== */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -14,50 +16,63 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   min-height: 100vh;
+  overflow: hidden;
+  position: relative;
   padding: 2rem;
   transition: background-color 0.4s, color 0.4s;
 }
 
-.card {
-  background-color: #036666;
-  width: 400px;
-  height: 150px;
-  color: white;
-  border-radius: 20px;
-  box-shadow: inset;
-  padding: 10px;
-  text-align: center;
-}
-
+/* ==================== DARK MODE ==================== */
 .dark-mode {
   background-color: var(--bg-dark);
   color: var(--text-dark);
 }
 
+/* ==================== CONTAINER ==================== */
 .container {
+  position: relative; /* on top of lines */
+  z-index: 10;
   text-align: center;
-  width: 100%;
-  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* spacing between elements */
 }
 
+/* ==================== CARD ==================== */
+.card {
+  background-color: #036666;
+  width: 400px;
+  min-height: 150px;
+  color: white;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s, background-color 0.4s;
+}
+
+/* ==================== HEADER ==================== */
 h1 {
-  margin-bottom: 10px;
   font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
-/* Search bar and emoji button */
+/* ==================== SEARCH BOX ==================== */
 .search-box {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
   margin: 20px 0;
+  width: 100%;
+  max-width: 400px;
 }
 
 .search-box input[type="text"] {
-  padding: 10px;
+  padding: 10px 15px;
   flex: 1;
   border: 2px solid #144552;
   border-radius: 25px;
@@ -80,21 +95,25 @@ h1 {
   background-color: #00796b;
 }
 
+/* ==================== RESULT BOX ==================== */
 .result {
-  margin-top: 20px;
   background-color: white;
-  padding: 20px;
+  color: black;
+  width: 100%;
+  max-width: 400px;
+  min-height: 150px;
   border-radius: 20px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.6s;
+  padding: 20px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+  text-align: center;
+  transition: background-color 0.4s, color 0.4s;
 }
 
 .dark-mode .result {
   background-color: #2c2c2c;
   color: var(--text-dark);
 }
-
-/* Toggle Switch */
+/* ==================== DARK MODE TOGGLE ==================== */
 .switch {
   position: relative;
   display: inline-block;
@@ -145,45 +164,24 @@ input:checked + .slider::before {
   transform: translateX(26px);
   content: "🌙";
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box !important;
-}
 
-html, body {
-  height: 100%;
-}
-
-body {
-  display: table;
-  width: 100%;
-  height: 100%;
-  background-color: #111;  /* Background color */
-  color: #f2f2f2;  /* Text color */
-  line-height: 1.6;
-  position: relative;
-  font-family: sans-serif;
-  overflow: hidden;
-}
-
+/* ==================== LINES ANIMATION ==================== */
 .lines {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
+  width: 100%;
   height: 100%;
-  margin: auto;
-  width: 90vw;
   display: flex;
-  justify-content: space-between; /* Distribute lines evenly */
+  justify-content: space-between;
+  pointer-events: none; /* allows clicking content */
+  z-index: 1; /* behind all content */
 }
 
 .line {
-  position: relative;
   width: 1px;
   height: 100%;
-  /*background: #ffffff;  /* Line color */
+  position: relative;
   overflow: hidden;
 }
 
@@ -196,67 +194,25 @@ body {
   top: -50%;
   left: 0;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
-  animation: drop 7s 0s infinite;
+  animation: drop 7s infinite;
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
 }
 
-/* Different colors for each line's pseudo-element */
-.line:nth-child(1)::after {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #FF4500 75%, #FF4500 100%);
-  animation-delay: 0.5s;
-}
+/* --- Different line colors and animation delays --- */
+.line:nth-child(1)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #FF4500 75%, #FF4500 100%); animation-delay: 0.5s;}
+.line:nth-child(2)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #32CD32 75%, #32CD32 100%); animation-delay: 1s;}
+.line:nth-child(3)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #1E90FF 75%, #1E90FF 100%); animation-delay: 1.5s;}
+.line:nth-child(4)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #FFD700 75%, #FFD700 100%); animation-delay: 2s;}
+.line:nth-child(5)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #8A2BE2 75%, #8A2BE2 100%); animation-delay: 2.5s;}
+.line:nth-child(6)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #20B2AA 75%, #20B2AA 100%); animation-delay: 3s;}
+.line:nth-child(7)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #DC143C 75%, #DC143C 100%); animation-delay: 3.5s;}
+.line:nth-child(8)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #00FA9A 75%, #00FA9A 100%); animation-delay: 4s;}
+.line:nth-child(9)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #FF1493 75%, #FF1493 100%); animation-delay: 4.5s;}
+.line:nth-child(10)::after { background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, #00BFFF 75%, #00BFFF 100%); animation-delay: 5s;}
 
-.line:nth-child(2)::after {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #32CD32 75%, #32CD32 100%);
-  animation-delay: 1s;
-}
-
-.line:nth-child(3)::after {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #1E90FF 75%, #1E90FF 100%);
-  animation-delay: 1.5s;
-}
-
-.line:nth-child(4)::after {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #FFD700 75%, #FFD700 100%);
-  animation-delay: 2s;
-}
-
-.line:nth-child(5)::after {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #8A2BE2 75%, #8A2BE2 100%);
-  animation-delay: 2.5s;
-}
-
-.line:nth-child(6)::after {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #20B2AA 75%, #20B2AA 100%);
-  animation-delay: 3s;
-}
-
-.line:nth-child(7)::after {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #DC143C 75%, #DC143C 100%);
-  animation-delay: 3.5s;
-}
-
-.line:nth-child(8)::after {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #00FA9A 75%, #00FA9A 100%);
-  animation-delay: 4s;
-}
-
-.line:nth-child(9)::after {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #FF1493 75%, #FF1493 100%);
-  animation-delay: 4.5s;
-}
-
-.line:nth-child(10)::after {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #00BFFF 75%, #00BFFF 100%);
-  animation-delay: 5s;
-}
-
+/* ==================== KEYFRAMES ==================== */
 @keyframes drop {
-  0% {
-    top: -50%;
-  }
-  100% {
-    top: 110%;
-  }
+  0% { top: -50%; }
+  100% { top: 110%; }
 }
